@@ -646,8 +646,8 @@ def main():
     recharge_conv = ConversationHandler(
         entry_points=[CallbackQueryHandler(recharge_start, pattern="^user_recharge$")],
         states={
-            WAITING_AMOUNT: [MessageHandler(filters.TEXT & \~filters.COMMAND, recharge_amount)],
-            WAITING_UTR: [MessageHandler(filters.TEXT & \~filters.COMMAND, recharge_utr)],
+            WAITING_AMOUNT: [MessageHandler(filters.TEXT & ~filters.COMMAND, recharge_amount)],
+            WAITING_UTR: [MessageHandler(filters.TEXT & ~filters.COMMAND, recharge_utr)],
             WAITING_SCREENSHOT: [MessageHandler(filters.PHOTO, recharge_screenshot)],
         },
         fallbacks=[CommandHandler("cancel", cancel)],
@@ -657,17 +657,17 @@ def main():
     # Admin set conversations
     setcmd_conv = ConversationHandler(
         entry_points=[CallbackQueryHandler(admin_setcmd_start, pattern="^admin_setcmd$")],
-        states={ADMIN_SET_CMD: [MessageHandler(filters.TEXT & \~filters.COMMAND, admin_setcmd_save)]},
+        states={ADMIN_SET_CMD: [MessageHandler(filters.TEXT & ~filters.COMMAND, admin_setcmd_save)]},
         fallbacks=[CommandHandler("cancel", cancel)]
     )
     setbotname_conv = ConversationHandler(
         entry_points=[CallbackQueryHandler(admin_setbotname_start, pattern="^admin_setbotname$")],
-        states={ADMIN_SET_BOTNAME: [MessageHandler(filters.TEXT & \~filters.COMMAND, admin_setbotname_save)]},
+        states={ADMIN_SET_BOTNAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, admin_setbotname_save)]},
         fallbacks=[CommandHandler("cancel", cancel)]
     )
     setdevname_conv = ConversationHandler(
         entry_points=[CallbackQueryHandler(admin_setdevname_start, pattern="^admin_setdevname$")],
-        states={ADMIN_SET_DEVNAME: [MessageHandler(filters.TEXT & \~filters.COMMAND, admin_setdevname_save)]},
+        states={ADMIN_SET_DEVNAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, admin_setdevname_save)]},
         fallbacks=[CommandHandler("cancel", cancel)]
     )
 
